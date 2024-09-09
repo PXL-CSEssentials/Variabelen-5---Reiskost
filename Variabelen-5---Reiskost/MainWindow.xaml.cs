@@ -29,32 +29,32 @@ namespace Variabelen_5___Reiskost
         private void calculateButton_Click(object sender, RoutedEventArgs e)
         {
             //Declaratie variabelen     
-            float totVluchtprijs;
-            float totVerblijfprijs;
-            float totReisprijs;
-            float korting;
-            float teBetalen;
+            float totalFlightPrice;
+            float totalResidencePrice;
+            float totalTravelPrice;
+            float reduction;
+            float amountToPay;
 
             //Berekening prijzen
-            totVluchtprijs = float.Parse(baseFlightTextBox.Text) *
+            totalFlightPrice = float.Parse(baseFlightTextBox.Text) *
                 float.Parse(numberOfPersonsTextBox.Text);
 
-            totVerblijfprijs = float.Parse(basePriceTextBox.Text) *
+            totalResidencePrice = float.Parse(basePriceTextBox.Text) *
                 (float.Parse(numberOfDaysTextBox.Text)) *
                 float.Parse(numberOfPersonsTextBox.Text);
-            totReisprijs = totVluchtprijs + totVerblijfprijs;
+            totalTravelPrice = totalFlightPrice + totalResidencePrice;
             float kortingspercentage = float.Parse(reductionPercentageTextBox.Text);
 
-            korting = totReisprijs * kortingspercentage / 100;
-            teBetalen = totReisprijs - korting;
+            reduction = totalTravelPrice * kortingspercentage / 100;
+            amountToPay = totalTravelPrice - reduction;
 
             // Afdruk
             // c: currency (munteenheid)
             resultTextBox.Text =
                 $"REISKOST VOLGENS BESTELLING NAAR {destinationTextBox.Text} \r\n\r\n" +
-                $"Totale vluchtprijs: {totVluchtprijs:c} \r\nTotale verblijfsprijs: {totVerblijfprijs:c} \r\n" +
-                $"Totale reisprijs: {totReisprijs:c} \r\nKorting: {korting:c} \r\n\r\n" +
-                $"Te betalen : {teBetalen:c}";
+                $"Totale vluchtprijs: {totalFlightPrice:c} \r\nTotale verblijfsprijs: {totalResidencePrice:c} \r\n" +
+                $"Totale reisprijs: {totalTravelPrice:c} \r\nKorting: {reduction:c} \r\n\r\n" +
+                $"Te betalen : {amountToPay:c}";
         }
 
         private void clearButton_Click(object sender, RoutedEventArgs e)
